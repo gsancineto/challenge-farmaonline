@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { Table, Image } from 'react-bootstrap';
+import { Table } from 'react-bootstrap';
 import Moment from 'react-moment';
 import Button from '@mui/material/Button';
 import { AccessTimeFilledSharp, AccountCircle } from '@mui/icons-material';
+import { Avatar } from '@mui/material';
+import { deepOrange } from '@mui/material/colors';
+
 
 export default function Dashboard() {
     const [users, setUsers] = useState([]);
@@ -40,7 +43,7 @@ export default function Dashboard() {
     }
 
     return (
-        <div className='w-25 m-auto text-center'>
+        <div className='w-25 m-auto text-center align-center'>
             <div className='d-flex justify-content-between'>
                 Hola {user.name}
                 <Button variant="text" color="error" onClick={handleLogout}><AccountCircle /> Logout</Button>
@@ -59,16 +62,11 @@ export default function Dashboard() {
                         <tr key={user.contactId}>
                             <td className='align-middle'>{`${user.name} ${user.surnames}`}</td>
                             <td className='align-middle'><Moment format="MMMM d, yyyy">{(user.birthDate)}</Moment></td>
-                            <td className='align-middle'>
-                                {user.photo ?
-                                    <Image
-                                        src={user.photo}
-                                        onError={({ currentTarget }) => {
-                                            currentTarget.src = "";
-                                        }}
-                                        width="90"
-                                        roundedCircle
-                                    /> : <AccountCircle sx={{ fontSize: 90 }} color="error" />}
+                            <td className='d-flex align-middle justify-content-center'>
+                                <Avatar
+                                    src={user.photo}
+                                    sx={{ bgcolor: deepOrange[200]}}
+                                />
                             </td>
                         </tr>
                     ))}
