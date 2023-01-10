@@ -1,6 +1,6 @@
-# En este documento está resuelto el challenge para Streambe FarmaOnline
+# Documentación Challenge Streambe FarmaOnline
 
-El proyecto fue realizado en react.js con algunas librerías como mui y bootstrap para manejar lo estético y axios para su funcionamiento
+El proyecto fue realizado en react.js con algunas librerías como mui y bootstrap para manejar lo estético y axios para las consultas http
 
 ## MUI vs BOOTSTRAP
 
@@ -9,12 +9,13 @@ por ejemplo:
 
 ### MUI
 
-En el manejo de Icons, TextField, Buttons se eligió MUI, debido a la similitud que tenía con lo requerido
+En el manejo de Icons, TextField, Buttons, Avatar se eligió MUI, debido a la similitud que tenía con lo requerido y en caso específico de Avatar
+por la sencillez que permitía tener un ícono default
 
 ### BOOTSTRAP
 
-Las Table, Image se decidió emplear BOOTSTRAP porque se necesitaba emplear algunas funcionalidades específicas
-(por ejemplo onError en Image y su tamaño en lugar de Avatar)
+La Table se decidió emplear BOOTSTRAP porque si bien no es recomendable escribir tanto código a mano por una cuestión de escalabilidad me pareció
+adecuado por el tamaño del proyecto y su simpleza
 
 ## AXIOS vs FETCH
 
