@@ -9,12 +9,12 @@ por ejemplo:
 
 ### MUI
 
-En el manejo de Icons, TextField, Buttons se eligió MUI, debido a la similitud que tenía con lo requerido
+En el manejo de Icons, TextField, Buttons, Avatar se eligió MUI, debido a la similitud que tenía con lo requerido y en caso específico de Avatar
+por la sencillez que permitía tener un ícono default
 
 ### BOOTSTRAP
 
-Las Table, Image se decidió emplear BOOTSTRAP porque se necesitaba emplear algunas funcionalidades específicas
-(por ejemplo onError en Image y su tamaño en lugar de Avatar)
+La Table se decidió emplear BOOTSTRAP porque era más sencillo en un proyecto tan pequeño
 
 ## AXIOS vs FETCH
 
