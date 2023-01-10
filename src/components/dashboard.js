@@ -3,10 +3,10 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Table } from 'react-bootstrap';
 import Moment from 'react-moment';
-import Button from '@mui/material/Button';
 import { AccessTimeFilledSharp, AccountCircle } from '@mui/icons-material';
-import { Avatar } from '@mui/material';
+import { Avatar, Stack, Button } from '@mui/material';
 import { deepOrange } from '@mui/material/colors';
+
 
 
 export default function Dashboard() {
@@ -44,10 +44,12 @@ export default function Dashboard() {
 
     return (
         <div className='w-25 m-auto text-center align-center'>
-            <div className='d-flex justify-content-between'>
-                Hola {user.name}
-                <Button variant="text" color="error" onClick={handleLogout}><AccountCircle /> Logout</Button>
-            </div>
+            <Stack spacing={2}>
+                <div className='d-flex justify-content-between'>
+                    Hola {user.name}
+                    <Button variant="text" color="error" onClick={handleLogout}><AccountCircle /> Logout</Button>
+                </div>
+            </Stack>
             <h6 style={{ float: "left" }}>Dashboard</h6>
             <Table bordered>
                 <thead className="table-light">
@@ -65,7 +67,7 @@ export default function Dashboard() {
                             <td className='d-flex align-middle justify-content-center'>
                                 <Avatar
                                     src={user.photo}
-                                    sx={{ bgcolor: deepOrange[200]}}
+                                    sx={{ bgcolor: deepOrange[200] }}
                                 />
                             </td>
                         </tr>

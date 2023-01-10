@@ -35,7 +35,7 @@ export default function Login() {
     };
 
     return (
-        <div className='d-flex w-25 m-auto text-center align-items-center'>
+        <div className='d-flex text-center justify-content-center'>
             <Stack spacing={2}>
                 <h3>Login</h3>
                 <TextField
