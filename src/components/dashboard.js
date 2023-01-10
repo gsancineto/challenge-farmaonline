@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { Table, Image } from 'react-bootstrap';
 import Moment from 'react-moment';
 import Button from '@mui/material/Button';
-import {AccessTimeFilledSharp, AccountCircle} from '@mui/icons-material';
+import { AccessTimeFilledSharp, AccountCircle } from '@mui/icons-material';
 
 export default function Dashboard() {
     const [users, setUsers] = useState([]);
@@ -45,7 +45,7 @@ export default function Dashboard() {
                 Hola {user.name}
                 <Button variant="text" color="error" onClick={handleLogout}><AccountCircle /> Logout</Button>
             </div>
-            <h6 style={{float:"left"}}>Dashboard</h6>
+            <h6 style={{ float: "left" }}>Dashboard</h6>
             <Table bordered>
                 <thead className="table-light">
                     <tr>
@@ -57,19 +57,18 @@ export default function Dashboard() {
                 <tbody>
                     {users.map(user => (
                         <tr key={user.contactId}>
-                            <td>{`${user.name} ${user.surnames}`}</td>
-                            <td><Moment format="MMMM d, yyyy">{(user.birthDate)}</Moment></td>
-                            <td>
-                                {user.photo && 
-                                <Image
-                                    src={user.photo}
-                                    onError={({ currentTarget }) => {
-                                        currentTarget.src = "";
-                                    }}
-                                    width="100"
-                                    roundedCircle
-                                />}
-                                {!user.photo && <AccountCircle sx={{ fontSize: 90 }} color="error" />}
+                            <td className='align-middle'>{`${user.name} ${user.surnames}`}</td>
+                            <td className='align-middle'><Moment format="MMMM d, yyyy">{(user.birthDate)}</Moment></td>
+                            <td className='align-middle'>
+                                {user.photo ?
+                                    <Image
+                                        src={user.photo}
+                                        onError={({ currentTarget }) => {
+                                            currentTarget.src = "";
+                                        }}
+                                        width="90"
+                                        roundedCircle
+                                    /> : <AccountCircle sx={{ fontSize: 90 }} color="error" />}
                             </td>
                         </tr>
                     ))}
