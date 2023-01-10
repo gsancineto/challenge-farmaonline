@@ -1,21 +1,24 @@
 import React, { useState } from "react";
-import { Button } from 'react-bootstrap';
-import Form from 'react-bootstrap/Form';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+import Stack from '@mui/material/Stack';
+
 
 export default function Login() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const navigate = useNavigate();
+    const uri = 'https://www.mockachino.com/06c67c77-18c4-45/login';
 
     const handleSubmit = async (event) => {
         event.preventDefault();
 
         if (username && password) {
             try {
-                const response = await axios.post('https://www.mockachino.com/06c67c77-18c4-45/login', {
+                const response = await axios.post(uri, {
                     username,
                     password,
                 });
@@ -33,31 +36,29 @@ export default function Login() {
 
     return (
         <div className='w-25 m-auto text-center'>
-            <h3>Login</h3>
-            <Form onSubmit={handleSubmit}>
-                <Form.Group className="mb-3">
-                    <Form.Control
-                        type="text"
-                        id="username"
-                        value={username}
-                        onChange={(event) => setUsername(event.target.value)}
-                        className="form-control"
-                        placeholder="Username"
-                    />
-                </Form.Group>
-                <Form.Group className="mb-3">
-                    <Form.Control
-                        type="password"
-                        id="password"
-                        value={password}
-                        onChange={(event) => setPassword(event.target.value)}
-                        className="form-control"
-                        placeholder="Password"
-                    />
-                </Form.Group>
+            <Stack spacing={2}>
+                <h3>Login</h3>
+                <TextField
+                    id="username"
+                    label="Username"
+                    variant="outlined"
+                    value={username}
+                    onChange={(event) => setUsername(event.target.value)}
+                    margin="normal"
+                    type={"text"}
+                />
+                <TextField
+                    id="password"
+                    label="Password"
+                    variant="outlined"
+                    value={password}
+                    onChange={(event) => setPassword(event.target.value)}
+                    margin="normal"
+                    type={"password"}
+                />
                 {error && <p>{error}</p>}
-                <Button variant="danger" type="submit" className="w-100">Ingresar</Button>
-            </Form>
+                <Button variant="contained" color="error" onClick={handleSubmit}>Ingresar</Button>
+            </Stack>
         </div>
     )
 }

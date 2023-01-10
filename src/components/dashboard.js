@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { Button, Table, Image } from 'react-bootstrap';
-import { PersonCircle, Clock } from 'react-bootstrap-icons';
+import { Table, Image } from 'react-bootstrap';
 import Moment from 'react-moment';
+import Button from '@mui/material/Button';
+import {AccessTimeFilledSharp, AccountCircle} from '@mui/icons-material';
 
 export default function Dashboard() {
     const [users, setUsers] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const user = JSON.parse(localStorage.getItem("userData"));
     const navigate = useNavigate();
+    const uri = 'https://www.mockachino.com/06c67c77-18c4-45/users';
 
     useEffect(() => {
         if (!user) {
@@ -18,7 +20,7 @@ export default function Dashboard() {
 
         async function fetchData() {
             try {
-                const response = await axios.get('https://www.mockachino.com/06c67c77-18c4-45/users');
+                const response = await axios.get(uri);
                 setUsers(response.data.users);
                 setIsLoading(false);
             } catch (error) {
@@ -34,16 +36,16 @@ export default function Dashboard() {
     }
 
     if (isLoading) {
-        return <div className='w-25 m-auto text-center'><h3><Clock /> Cargando usuarios...</h3></div>;
+        return <div className='w-25 m-auto text-center'><h3><AccessTimeFilledSharp /> Cargando usuarios...</h3></div>;
     }
 
     return (
         <div className='w-25 m-auto text-center'>
             <div className='d-flex justify-content-between'>
-                <h3>Hola {user.name}</h3>
-                <Button variant="outline-danger" onClick={handleLogout}><PersonCircle /> Logout</Button>
+                Hola {user.name}
+                <Button variant="text" color="error" onClick={handleLogout}><AccountCircle /> Logout</Button>
             </div>
-            <h5 style={{float:"left"}}>Dashboard</h5>
+            <h6 style={{float:"left"}}>Dashboard</h6>
             <Table bordered>
                 <thead className="table-light">
                     <tr>
@@ -67,7 +69,7 @@ export default function Dashboard() {
                                     width="100"
                                     roundedCircle
                                 />}
-                                {!user.photo && <PersonCircle size={90} color="tomato" />}
+                                {!user.photo && <AccountCircle sx={{ fontSize: 90 }} color="error" />}
                             </td>
                         </tr>
                     ))}
